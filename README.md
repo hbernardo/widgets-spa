@@ -1,13 +1,37 @@
 # Widgets Single Page App Demo
-This is a simple multi-page HTML site. The goal of this project is to take this hardcoded HTML site, and make it hit an API for showing/listing user and widget information. 
+This is a simple multi-page HTML site. It hits an API for showing/listing user and widget information.
 
 
 ## Features
-- A user view that displays a list of users (data via api `/users`), each user should have a method of clicking to viewing all the details of that user (`/user/:id`)
-- A widget view that displays a list of widgets (`/widgets`), each widget should have a method of clicking to view the details of that widget (`/widget/:id`)
-- A search/filter on the user and widget list views
-- A method of creating a new widget (POST `/widgets`)
-- A method of updating an existing widget (PUT `/widgets/:id`)
+
+
+### Dashboard page
+- Loads "id" and "name" information of all users and widgets. Also shows their quantities.
+- Use the input fields to search through users or widgets. It searchs from all data, except from the user "gravatar" url and widget "melts" information.
+- Click on any table row to get detailed information from users or widgets. Click again to close it.
+
+
+### Users page
+- Loads a list containing all users information.
+- Use the input field to search through users data (except from "gravatar" url).
+
+
+### Widgets page
+- Loads a list containing all widgets information.
+- Click on "+ Create" button (top right) to add a new widget. You will be redirected to the end of the page where you can fill its data. Click on "Create" button to add it.
+- Click on any table row to edit any widget information. You will be redirected to the end of the page where you can change it. Click on "Edit" button to apply it.
+
+
+# Requirements
+It´s not necessary any extra requirement.
+
+
+## How to run
+Simply open the main page (index.html) in the browser and navigate through the pages from the left menu.
+
+
+## Tested browser
+Google Chrome.
 
 
 # API Documentation
@@ -21,4 +45,3 @@ There's an API available at `http://spa.tglrw.com:4000` for retrieving the data 
 - GET `/widgets/:id` [http://spa.tglrw.com:4000/widgets/:id](http://spa.tglrw.com:4000/widgets/:id)
 - POST `/widgets` for creating new widgets [http://spa.tglrw.com:4000/widgets](http://spa.tglrw.com:4000/widgets)
 - PUT `/widgets/:id` for updating existing widgets [http://spa.tglrw.com:4000/widgets/:id](http://spa.tglrw.com:4000/widgets/:id)
-

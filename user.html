@@ -6,19 +6,21 @@
     <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="components/rdash-ui/dist/css/rdash.min.css">
+    <link rel="stylesheet" type="text/css" href="components/animation/loader.css">
+	<script src="components/js/scripts.js"></script>
 
   </head>
-  <body>
+  <body onload="updateList('/users', '', 0, false);">
     <div id="page-wrapper" class="open">
 
       <!-- Sidebar -->
       <div id="sidebar-wrapper">
         <ul class="sidebar">
-          <li class="sidebar-main"><a href="/">Dashboard <span class="menu-icon fa fa-tachometer"></span></a></li>
+          <li class="sidebar-main"><a href="./index.html">Dashboard <span class="menu-icon fa fa-tachometer"></span></a></li>
           <li class="sidebar-title"><span>NAVIGATION</span></li>
-          <li class="sidebar-list"><a href="/">Dashboard <span class="menu-icon fa fa-tachometer"></span></a></li>
-          <li class="sidebar-list"><a href="/user.html">Users <span class="menu-icon fa fa-users"></span></a></li>
-          <li class="sidebar-list"><a href="/widget.html">Widgets <span class="menu-icon fa fa-cubes"></span></a></li>
+          <li class="sidebar-list"><a href="./index.html">Dashboard <span class="menu-icon fa fa-tachometer"></span></a></li>
+          <li class="sidebar-list"><a href="./user.html">Users <span class="menu-icon fa fa-users"></span></a></li>
+          <li class="sidebar-list"><a href="./widget.html">Widgets <span class="menu-icon fa fa-cubes"></span></a></li>
         </ul>
         <div class="sidebar-footer col-xs-12"><a href="#" target="_blank">&copy; 2015 Red Ventures</a></div>
       </div>
@@ -36,8 +38,8 @@
               </div>
             </div>
             <div class="meta">
-              <div class="page">Dashboard</div>
-              <div class="breadcrumb-links">Home / Dashboard</div>
+              <div class="page">Users</div>
+              <div class="breadcrumb-links">Home / Users</div>
             </div>
           </div>
           <!-- End Header Bar -->
@@ -50,7 +52,7 @@
             <div class="col-lg-12">
               <div class="widget">
                 <div class="widget-header">Users
-                  <div class="pull-right"><input type="text" class="form-control input-sm"></div>
+                  <div class="pull-right"><input type="text" class="form-control input-sm" onkeydown="clearTimer();" onkeyup="searchList('/users', this.value, 0, false);"></div>
                 </div>
                 <div class="table-responsive">
                   <table class="table">
@@ -61,12 +63,14 @@
                         <th>Avatar</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="list0">
+                      <!-- Example:
                       <tr>
                         <td class="text-center">1</td>
                         <td>JBoss McHuston</td>
                         <td><img src="https://s.gravatar.com/avatar/e11550b1bf793d43639292b196374262?s=48"></td>
-                      </tr>
+                      </tr> 
+                      -->
                     </tbody>
                   </table>
                 </div>

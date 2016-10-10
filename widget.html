@@ -6,19 +6,21 @@
     <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="components/rdash-ui/dist/css/rdash.min.css">
+    <link rel="stylesheet" type="text/css" href="components/animation/loader.css">
+	<script src="components/js/scripts.js"></script>
 
   </head>
-  <body>
+  <body onload="updateList('/widgets', '', 1, false);">
     <div id="page-wrapper" class="open">
 
       <!-- Sidebar -->
       <div id="sidebar-wrapper">
         <ul class="sidebar">
-          <li class="sidebar-main"><a href="/">Dashboard <span class="menu-icon fa fa-tachometer"></span></a></li>
+          <li class="sidebar-main"><a href="./index.html">Dashboard <span class="menu-icon fa fa-tachometer"></span></a></li>
           <li class="sidebar-title"><span>NAVIGATION</span></li>
-          <li class="sidebar-list"><a href="/">Dashboard <span class="menu-icon fa fa-tachometer"></span></a></li>
-          <li class="sidebar-list"><a href="/user.html">Users <span class="menu-icon fa fa-users"></span></a></li>
-          <li class="sidebar-list"><a href="/widget.html">Widgets <span class="menu-icon fa fa-cubes"></span></a></li>
+          <li class="sidebar-list"><a href="./index.html">Dashboard <span class="menu-icon fa fa-tachometer"></span></a></li>
+          <li class="sidebar-list"><a href="./user.html">Users <span class="menu-icon fa fa-users"></span></a></li>
+          <li class="sidebar-list"><a href="./widget.html">Widgets <span class="menu-icon fa fa-cubes"></span></a></li>
         </ul>
         <div class="sidebar-footer col-xs-12"><a href="#" target="_blank">&copy; 2015 Red Ventures</a></div>
       </div>
@@ -36,8 +38,8 @@
               </div>
             </div>
             <div class="meta">
-              <div class="page">Dashboard</div>
-              <div class="breadcrumb-links">Home / Dashboard</div>
+              <div class="page">Widgets</div>
+              <div class="breadcrumb-links">Home / Widgets</div>
             </div>
           </div>
           <!-- End Header Bar -->
@@ -51,7 +53,7 @@
               <div class="widget">
                 <div class="widget-header">Widgets
                   <div class="pull-right">
-                    <button class="btn btn-sm btn-info">+ Create</button>
+                    <button class="btn btn-sm btn-info" onclick="updateCreateEditForm(false, null)">+ Create</button>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -66,7 +68,8 @@
                         <th>Inventory</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="list1">
+                      <!-- Example:
                       <tr>
                         <td class="text-center">1</td>
                         <td>Foo</td>
@@ -75,6 +78,7 @@
                         <td>yes</td>
                         <td>27</td>
                       </tr>
+                      -->
                     </tbody>
                   </table>
                 </div>
@@ -91,11 +95,12 @@
             <!-- Widget listing -->
             <div class="col-lg-12">
               <div class="widget">
-                <div class="widget-header">Create/Edit Template</div>
-                <div class="widget-body">
+                <div class="widget-header">Create/Edit</div>
+                <div class="widget-body" id="widget-edit-create-loader" style="display: none; height: 80px;"><div class="loader"></div></div>
+                <div class="widget-body" id="widget-edit-create">
                   <form class="form-horizontal">
 
-                    <legend>Create Widget</legend>
+                    <legend id="widget-form-title">Create Widget</legend>
 
                     <!-- Name-->
                     <div class="controls">
@@ -137,7 +142,12 @@
                       Inventory
                       <input id="widget-count" name="widget-count" type="text" placeholder="#?" class="input-small">
                     </div>
+                    
+                    <input id="widget-id" name="widget-id" type="hidden" name="country" value="591">
+                    
                   </form>
+                  <button id="widget-create-button" class="btn btn-sm btn-info" onclick="setWidget(false);">Create</button>
+                  <button id="widget-edit-button" class="btn btn-sm btn-info" onclick="setWidget(true);" style="display: none;">Edit</button>
                 </div><!-- End Widget body -->
               </div><!-- End Widget -->
             </div><!-- End Column -->
