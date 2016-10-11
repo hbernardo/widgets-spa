@@ -10,7 +10,7 @@
 	<script src="components/js/scripts.js"></script>
 
   </head>
-  <body onload="updateList('/users', '', 0, false);">
+  <body onload="updateList('/users', '', false);">
     <div id="page-wrapper" class="open">
 
       <!-- Sidebar -->
@@ -52,7 +52,7 @@
             <div class="col-lg-12">
               <div class="widget">
                 <div class="widget-header">Users
-                  <div class="pull-right"><input type="text" class="form-control input-sm" onkeydown="clearTimer();" onkeyup="searchList('/users', this.value, 0, false);"></div>
+                  <div class="pull-right"><input type="text" class="form-control input-sm" onkeydown="clearTimer();" onkeyup="searchList('/users', this.value, false);"></div>
                 </div>
                 <div class="table-responsive">
                   <table class="table">

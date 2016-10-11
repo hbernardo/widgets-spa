@@ -223,7 +223,15 @@ function rowClickHandler(cmd, infoType, table, row, reduced) {
     };
 }
 
-function updateList(cmd, searchStr, infoType, reduced) {
+function updateList(cmd, searchStr, reduced) {
+    var infoType;
+    if ("/widgets" == cmd) {
+        infoType = 1;
+    }
+    else if ("/users" == cmd) {
+        infoType = 0;
+    }
+    
     var table = document.getElementById("list"+infoType);
 
     if (!isLoaderRunning(infoType, table, 0)) {
@@ -263,8 +271,18 @@ function updateList(cmd, searchStr, infoType, reduced) {
     }
 }
 
-function searchList(cmd, searchStr, infoType, reduced) {
-    searchTimer = setTimeout(function() { updateList(cmd, searchStr, infoType, reduced); }, 300);
+function searchList(cmd, searchStr, reduced) {
+    if (searchStr.length > 3 || searchStr == "") {
+        var infoType;
+        if ("/widgets" == cmd) {
+            infoType = 1;
+        }
+        else if ("/users" == cmd) {
+            infoType = 0;
+        }
+        
+        searchTimer = setTimeout(function() { updateList(cmd, searchStr, reduced); }, 300);
+    }
 }
 
 function clearTimer() {
@@ -359,7 +377,7 @@ function setWidget(edit) {
                     }
                     else {
                         enableCreateEditForm();
-                        updateList('/widgets', '', 1, false);
+                        updateList('/widgets', '', false);
                     }
                 }
             }
